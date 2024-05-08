@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block body %}
+<body>
+    <h1>Students</h1>
+
+    <!-- Button to add a new student -->
+    <a href="/add_student"><button>Add Student</button></a>
+
+    <table border="1">
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birth Date</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td>{{ student[4] }}</td>
+            <td>
+                <!-- Button to update a student -->
+                <a href="/update_student/{{ student[0] }}"><button>Update</button></a>
+                
+                <!-- Button to delete a student -->
+                <form action="/delete_student/{{ student[0] }}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+{% endblock %}

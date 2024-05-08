@@ -1,0 +1,27 @@
+<h1>Tasks</h1>
+<a href="/add_task"><button>Add Task</button></a>
+
+<table border="1">
+    <tr>
+        <th>Task ID</th>
+        <th>Description</th>
+        <th>Time Taken</th>
+        <th>Actions</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task[0] }}</td>
+        <td>{{ task[1] }}</td>
+        <td>{{ task[2] }}</td>
+        <td>
+            <!-- Button to update a task -->
+            <a href="/update_task/{{ task[0] }}"><button>Update</button></a>
+            
+            <!-- Button to delete a task -->
+            <form action="/delete_task/{{ task[0] }}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Attendance</h1>
+
+    <table border="1">
+        <tr>
+            <th>Student Name</th>
+            <th>Present</th>
+            <th>Absent</th>
+        </tr>
+        {% for student_name, attendance in attendance_data.items() %}
+        <tr>
+            <td>{{ student_name }}</td>
+            <td>{{ attendance.present }}</td>
+            <td>{{ attendance.absent }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
